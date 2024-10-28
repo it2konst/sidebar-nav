@@ -7,6 +7,7 @@
     z-index: 100;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
+    @include no-tap-highlight;
 
     &__icon {
         position: absolute;
@@ -15,6 +16,7 @@
         margin-left: -10px;
         display: block;
         width: 25px;
+        border-radius: 4px;
         height: 3px;
         background: #fff;
         transition-duration: 0.3s;
@@ -33,11 +35,13 @@
         &::before {
             top: -9px;
             width: 20px;
+            border-radius: 4px;
         }
 
         &::after {
             top: 9px;
-            width: 30px;
+            width: 20px;
+            border-radius: 4px;
         }
     }
 
@@ -45,19 +49,17 @@
         cursor: pointer;
     }
 
-    &--active {
-        &__icon {
-            background-color: transparent;
+    &.menu--active span {
+        background-color: transparent;
 
-            &::before {
-                transform: translateY(9px) rotate(45deg);
-                width: 30px;
-            }
+        &::before {
+            transform: translateY(9px) rotate(45deg);
+            width: 25px;
+        }
 
-            &::after {
-                transform: translateY(-9px) rotate(-45deg);
-                width: 30px;
-            }
+        &::after {
+            transform: translateY(-9px) rotate(-45deg);
+            width: 25px;
         }
     }
 }
