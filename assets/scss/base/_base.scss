@@ -1,0 +1,38 @@
+html {
+    font-size: 62.5%;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #2a2a2a;
+    overflow-x: hidden;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 1232px;
+}
+
+.none {
+    display: none !important;
+}
+
+.visually-hidden {
+    /* Contain text within 1px box */
+    height: 1px;
+    overflow: hidden;
+    width: 1px;
+
+    /* Keep the layout */
+    position: absolute;
+
+    /* Remove any visible trace (e.g. background color) */
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%); /* browsers in the future */
+
+    /* Prevent the screen reader to skip spaces between words */
+    white-space: nowrap;
+}
