@@ -5,57 +5,152 @@
     width: 60px;
     height: 50px;
     z-index: 100;
-    background: rgb(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -10px;
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #fff;
+        transition-duration: 0.3s;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            transition-duration: 0.3s;
+        }
+
+        &::before {
+            top: -9px;
+            width: 20px;
+        }
+
+        &::after {
+            top: 9px;
+            width: 30px;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &--active {
+        &__icon {
+            background-color: transparent;
+
+            &::before {
+                transform: translateY(9px) rotate(45deg);
+                width: 30px;
+            }
+
+            &::after {
+                transform: translateY(-9px) rotate(-45deg);
+                width: 30px;
+            }
+        }
+    }
 }
 
-.menu span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -10px;
-}
-
-.menu span,
-.menu span::before,
-.menu span::after {
-    display: block;
-    width: 25px;
+.nav {
+    position: fixed;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
     right: 0;
-    height: 3px;
-    background: #fff;
-    transition-duration: 0.3s;
-}
+    height: 100%;
+    max-width: 250px;
+    width: 100%;
+    padding: 100px 40px 60px 40px;
+    transition: transform 0.5s ease-in;
+    transform: translateX(100%);
 
-.menu span::before,
-.menu span::after {
-    content: "";
-    position: absolute;
-}
+    &--show {
+        transform: translateX(0);
+    }
 
-.menu span::before {
-    top: -9px;
-    width: 20px;
-}
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
 
-.menu span::after {
-    top: 9px;
-    width: 33px;
-}
+        &__item {
+            position: relative;
+            margin: 10px 0;
+            color: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(45px);
+            opacity: 0;
 
-.menu:hover {
-    cursor: pointer;
-}
+            &:nth-child(1) {
+                transition-delay: 0.15s;
+            }
 
-.menu.active span {
-    background-color: transparent;
-}
+            &:nth-child(2) {
+                transition-delay: 0.3s;
+            }
 
-.menu.active span::before {
-    transform: translateY(9px) rotate(45deg);
-    width: 45px;
-}
+            &:nth-child(3) {
+                transition-delay: 0.45s;
+            }
 
-.menu.active span::after {
-    transform: translateY(-9px) rotate(-45deg);
+            &:nth-child(4) {
+                transition-delay: 0.6s;
+            }
+
+            .nav--show & {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            &::before {
+                content: "•";
+                position: absolute;
+                left: -10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.2rem;
+                color: #fff;
+            }
+
+            &__link {
+                display: block;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 1.7rem;
+                padding: 10px 0;
+                transition: all 0.3s ease;
+                position: relative;
+
+                &:hover {
+                    color: var(--second-color);
+
+                    &::after {
+                        width: 100%;
+                    }
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -5px;
+                    height: 2px;
+                    width: 0;
+                    background: var(--second-color);
+                    transition: width 0.3s ease;
+                }
+            }
+        }
+    }
 }
