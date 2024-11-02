@@ -48,7 +48,6 @@ sidebar-navigation-menu/
 ## Contact
 If you have any questions or suggestions, please feel free to reach out:
 
-- Email: wotrvs@gmail.com
 - GitHub: [Konstantin Berg](https://github.com/it2konst/)
 
 ## License
